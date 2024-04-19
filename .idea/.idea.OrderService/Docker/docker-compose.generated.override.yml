@@ -1,0 +1,21 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  orderapi:
+    build:
+      context: "/Users/amandatao/RiderProjects/WebProgramming/OrderService"
+      dockerfile: "OrderAPI/Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net6.0/OrderAPI.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "orderapi:dev"
+    ports: []
+    volumes:
+    - "/Users/amandatao/.nuget/packages:/root/.nuget/packages"
+    - "/Users/amandatao/RiderProjects/WebProgramming/OrderService/OrderAPI:/app:rw"
+    - "/Users/amandatao/RiderProjects/WebProgramming/OrderService:/src:rw"
+    working_dir: "/app"

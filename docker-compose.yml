@@ -1,0 +1,8 @@
+﻿services:
+  orderapi:
+    image: orderapi
+    build:
+      context: .
+      dockerfile: OrderAPI/Dockerfile
+    ports:
+      - 1551:80
