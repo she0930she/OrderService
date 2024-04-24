@@ -67,3 +67,4 @@
 /Users/amandatao/RiderProjects/WebProgramming/OrderService/OrderAPI/obj/Debug/net6.0/OrderAPI.pdb
 /Users/amandatao/RiderProjects/WebProgramming/OrderService/OrderAPI/obj/Debug/net6.0/OrderAPI.genruntimeconfig.cache
 /Users/amandatao/RiderProjects/WebProgramming/OrderService/OrderAPI/obj/Debug/net6.0/ref/OrderAPI.dll
+/Users/amandatao/RiderProjects/WebProgramming/OrderService/OrderAPI/obj/Debug/net6.0/OrderAPI.sourcelink.json

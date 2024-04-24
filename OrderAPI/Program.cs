@@ -5,6 +5,7 @@ using Infrastructure.Repository;
 using Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
+var  MyAllowSpecificOrigins = "_myAllowSpecificOrigins"; // CORS
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,6 +15,22 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
+// CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+        policy  =>
+        {
+            policy.WithOrigins(
+                    "http://localhost:4200", "http://example.com",
+                    "https://ashy-river-0f68ccb1e.5.azurestaticapps.net")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+                
+        });
+});
 // attach it to connectionstring
 builder.Services.AddDbContext<ProductDbContext>(option =>
 {
@@ -32,14 +49,15 @@ builder.Services.AddScoped<ICartItemRepoAsync, CartItemRepoAsync>(); // in servi
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+// if (app.Environment.IsDevelopment())
+// {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+// }
 
 app.UseHttpsRedirection();
 
+app.UseCors(MyAllowSpecificOrigins);
 app.UseAuthorization();
 
 app.MapControllers();
